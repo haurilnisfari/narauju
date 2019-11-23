@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <td> Title </td>
+    <td> Body </td>
+    <td> Action </td>
+  </tr>
+
+  <% @posts.each do |post| %>
+
+  <tr>
+    <td><%= post.title %></td>
+    <td><%= post.body %></td>
+    <td><%= link_to 'Detail', post_path(post) %></td>
+  </tr>
+  <%end%>
+
+  <tr>
+    <td><%= link_to 'New Post', new_post_path %></td>
+  </tr>
+</table>

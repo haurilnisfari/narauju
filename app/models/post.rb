@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  belongs_to :user
-  has_many :postcategories
-  has_many :categories through: :postcategories
+  belongs_to :user, optional: true
+  has_many :post_categories
+  has_many :categories, through: :post_categories
 end
