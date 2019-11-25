@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    flash[:notice] = "Post has been created" 
     # title = params[:post][:title]
     # body = params[:post][:body]
     # post = Post.new(title: title, body: body)
@@ -28,6 +29,7 @@ class PostsController < ApplicationController
   #when we run edit method then we update the database by update method
   def update
     # render plain: params.inspect #to inspect what kind of params that be return value of this method
+    flash[:notice] = "Post has been updated"
     post = Post.find(params[:id]) #catch the post which has the active id
     post.attributes = resource_params #update the post with attributes not update method in order to saving the update in the end, bzos we have a unsaved categories
     category_ids = params[:post][:categories] #catch the categories of the current post
@@ -37,8 +39,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    flash[:notice] = "Post has been deleted"
     @post = Post.find(params[:id]) #catch the post which has the active id
-    @post.destroy 
+    @post.destroy
     redirect_to posts_path
   end
 
