@@ -1,2 +1,7 @@
 Title : <%= @post.title %></br>
 Body : <%= @post.body %></br>
+<% array = [] %>
+<% @post.categories.each do |category| %>
+  <% array << category.name %>
+<% end %>
+Category : <%= array.join( ', ' ) %></br>

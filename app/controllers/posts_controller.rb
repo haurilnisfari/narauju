@@ -20,9 +20,20 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+    @categories = Category.all
+    @category_ids = @post.category_ids
   end
 
+  #when we run edit method then we update the database by update method
   def update
+    # render plain: params.inspect #to inspect what kind of params that be return value of this method
+    post = Post.find(params[:id]) #catch the post which has the active id
+    post.attributes = resource_params #update the post with attributes not update method in order to saving the update in the end, bzos we have a unsaved categories
+    category_ids = params[:post][:categories] #catch the categories of the current post
+    post.category_ids = category_ids #assign the new category_ids with the updated category
+    post.save # ya save lah
+    redirect_to post_path(post)
   end
 
   def destroy
