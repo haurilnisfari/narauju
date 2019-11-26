@@ -1,0 +1,26 @@
+<% if flash[:notice].present? %>
+  <%= flash[:notice] %>
+<% end %>
+</br>
+
+<table>
+  <tr>
+    <td> Name </td>
+    <td> Action </td>
+  </tr>
+
+  <% @categories.each do |category| %>
+  <tr>
+    <td><%= category.name %></td>
+    <td><%= link_to 'Detail', category_path(category) %> |
+        <%= link_to 'Edit', edit_category_path(category) %> |
+        <%= link_to 'Delete', category_path(category), method: :delete, data: {confirm: "Are you sure?"} %> </td>
+  </tr>
+  <% end %>
+
+</tr>
+
+<tr>
+  <td><%= link_to 'New Category', new_category_path %></td>
+</tr>
+</table>
