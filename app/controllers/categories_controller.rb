@@ -22,9 +22,14 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    flash[:notice] = "Category has been deleted"
     category = Category.find(params[:id])
-    category.destroy
+    post_category = PostCategory.find_by(category_id: category.id)
+    if post_category
+      flash[:notice] = "Category cannot be deleted"
+    else
+      category.destroy
+      flash[:notice] = "Category has been deleted"
+    end
     redirect_to categories_path
   end
 
