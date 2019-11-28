@@ -35,7 +35,7 @@ class PostsController < ApplicationController
     category_ids = params[:post][:categories] #catch the categories of the current post
     post.category_ids = category_ids #assign the new category_ids with the updated category
     post.save # ya save lah
-    redirect_to post_path(post) #redirect ke post yg bersangkutan
+    redirect_to posts_path #redirect ke post yg bersangkutan
   end
 
   def destroy

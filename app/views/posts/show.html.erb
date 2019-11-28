@@ -2,11 +2,14 @@
   <%= flash[:notice] %>
 <% end %>
 </br>
-
-Title : <%= @post.title %></br>
-Body : <%= @post.body %></br>
-<% array = [] %>
-<% @post.categories.each do |category| %>
-  <% array << category.name %>
-<% end %>
-Category : <%= array.join( ', ' ) %></br>
+<div class="card">
+  <%= @post.created_at.strftime("%e %b %Y") %>
+  |
+  <% array = [] %>
+  <% @post.categories.each do |category| %>
+    <% array << category.name %>
+  <% end %>
+  <%= array.join( ', ' ) %></br>
+  <h2><%= @post.title %></h2>
+  <p><%= @post.body %></p>
+</div>
