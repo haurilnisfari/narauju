@@ -15,7 +15,7 @@
 
   <tr>
     <td><%= post.title %></td>
-    <td><%= post.body %></td>
+    <td><%= truncate(strip_tags(post.body.to_s), length: 160) %></td>
     <% array = [] %>
     <% post.categories.each do |category| %>
       <% array << category.name %>
