@@ -9,5 +9,9 @@
   <% @categories.each do |category| %>
     <%= f.check_box :categories, { multiple: true }, category.id, false %> <%= category.name %> </br>
   <% end %>
+
+  <%= f.label :state %></br>
+  <%= f.select :state, ['draft', 'publish']%> </br>
+  
   <%= f.submit "Save" %></br>
 <%end%>

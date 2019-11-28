@@ -8,6 +8,7 @@
     <td> Title </td>
     <td> Body </td>
     <td> Category </td>
+    <td> State </td>
     <td> Action </td>
   </tr>
 
@@ -21,6 +22,7 @@
       <% array << category.name %>
     <% end %>
     <td><%= array.join(', ') %></td>
+    <td><%= post.state %></td>
     <td><%= link_to 'Detail', post_path(post) %> |
         <%= link_to 'Edit', edit_post_path(post) %> |
         <%= link_to 'Delete', post_path(post), method: :delete, data: {confirm: "Are you sure?"} %> </td>

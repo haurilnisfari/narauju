@@ -58,7 +58,7 @@ class PostsController < ApplicationController
   private
 
   def resource_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :state)
   end
 
 
