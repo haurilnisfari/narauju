@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    flash[:notice] = "Post has been created" 
+    flash[:notice] = "Post has been created"
     # title = params[:post][:title]
     # body = params[:post][:body]
     # post = Post.new(title: title, body: body)
