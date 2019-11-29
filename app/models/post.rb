@@ -3,4 +3,8 @@ class Post < ApplicationRecord
   has_many :post_categories
   has_many :categories, through: :post_categories
   has_rich_text :body
+
+  def self.published
+    where(state: "publish")
+  end
 end

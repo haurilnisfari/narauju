@@ -51,8 +51,11 @@ class PostsController < ApplicationController
 
   def show
     id = params[:id]
-    @post = Post.find(id)
-    puts @post
+    @post = Post.find_by(id: id, state: "publish")
+
+    if @post.nil?
+      redirect_to root_path
+    end
   end
 
   private
