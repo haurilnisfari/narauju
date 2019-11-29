@@ -28,9 +28,9 @@
         </div>
         <div class="card">
           <h3>Popular Post</h3>
-          <div class="fakeimg">Image</div><br>
-          <div class="fakeimg">Image</div><br>
-          <div class="fakeimg">Image</div>
+          <% @popular_posts.each do |popular_post| %>
+            <div><%= link_to popular_post.title, popular_post %></div></br>
+          <% end %>
         </div>
         <div class="card"
           <h3>My Repository</h3><br>

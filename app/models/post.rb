@@ -7,4 +7,17 @@ class Post < ApplicationRecord
   def self.published
     where(state: "publish")
   end
+
+  def self.popular
+    order(view_count: :desc).limit(3)
+  end
+
+  def publish?
+    self.state == "publish"
+  end
+
+  def draft?
+    self.state == "draft"
+  end
+
 end

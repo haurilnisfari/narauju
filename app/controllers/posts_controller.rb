@@ -50,6 +50,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    load_popular_posts
     id = params[:id]
     @post = Post.find_by(id: id, state: "publish")
 
