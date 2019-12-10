@@ -32,9 +32,15 @@
             <div><%= link_to popular_post.title, popular_post %></div></br>
           <% end %>
         </div>
-        <div class="card"
+        <div class="card">
           <h3>My Repository</h3><br>
           <%= link_to image_tag("github.png"), "https://github.com/haurilnisfari"  %>
+        </div>
+        <div class="card">
+          <h3>Category</h3>
+          <% @categories.each do |category| %>
+            <div><%= link_to category.name, category_path(category) %></div></br>
+          <% end %>
         </div>
       </div>
     </div>

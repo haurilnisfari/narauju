@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :load_popular_posts, except: [:create, :destroy]
+  before_action :load_categories, except: [:create, :destroy]
+
 
   def new
     @post = Post.new

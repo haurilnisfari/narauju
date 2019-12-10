@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+  before_action :load_popular_posts, except: [:create, :destroy]
+  before_action :load_categories, except: [:create, :destroy]
+
   def new
     @category = Category.new
   end
@@ -39,7 +42,10 @@ class CategoriesController < ApplicationController
 
   def show
     id = params[:id]
-    @category = Category.find(id)
+    post_ids = PostCategory.where(category_id: id).pluck(:post_id)
+    @posts = Post.where(id: post_ids)
+
+    render 'home/index'
   end
 
   private
