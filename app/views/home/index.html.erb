@@ -3,10 +3,12 @@
     <h2><%=link_to post.title, post_path(post)%></h2>
     <%=post.created_at.strftime("%e %b %Y")%> |
     <% array = [] %>
+    <% cat = nil %>
     <% post.categories.each do |category| %>
       <% array << category.name %>
+      <% cat = category %>
     <% end %>
-    <%= array.join( ', ' ) %></br>
+    <%= link_to array.join( ', ' ), category_path(cat) %></br>
     <p><%=truncate(strip_tags(post.body.to_s), length: 160) %></p>
     <%= link_to 'read more', post_path(post) %>
   <% end %>
