@@ -5,11 +5,9 @@
 <div class="card">
   <%= @post.created_at.strftime("%e %b %Y") %>
   |
-  <% array = [] %>
   <% @post.categories.each do |category| %>
-    <% array << category.name %>
+    <%= link_to category.name, category_path(category) %>
   <% end %>
-  <%= array.join( ', ' ) %></br>
   <h2><%= @post.title %></h2>
   <p><%= @post.body %></p>
 </div>

@@ -25,7 +25,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
     @categories = Category.all
     @category_ids = @post.category_ids
   end
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   def update
     # render plain: params.inspect #to inspect what kind of params that be return value of this method
     flash[:notice] = "Post has been updated"
-    post = Post.find(params[:id]) #catch the post which has the active id
+    post = Post.friendly.find(params[:id]) #catch the post which has the active id
     post.attributes = resource_params #update the post with attributes not update method in order to saving the update in the end, bzos we have a unsaved categories
     category_ids = params[:post][:categories] #catch the categories of the current post
     post.category_ids = category_ids #assign the new category_ids with the updated category
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
 
   def destroy
     flash[:notice] = "Post has been deleted"
-    @post = Post.find(params[:id]) #catch the post which has the active id
+    @post = Post.friendly.find(params[:id]) #catch the post which has the active id
     @post.destroy
     redirect_to posts_path
   end
@@ -54,10 +54,9 @@ class PostsController < ApplicationController
   end
 
   def show
-    id = params[:id]
-    @post = Post.find_by(id: id, state: "publish")
+    @post = Post.friendly.find(params[:id])
 
-    if @post.nil?
+    if @post.draft?
       redirect_to root_path
     end
   end

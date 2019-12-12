@@ -14,18 +14,18 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
+    @category = Category.friendly.find(params[:id])
   end
 
   def update
     flash[:notice] = "Category has been updated"
-    category = Category.find(params[:id])
+    category = Category.friendly.find(params[:id])
     category.update(resource_params)
     redirect_to category_path(category)
   end
 
   def destroy
-    category = Category.find(params[:id])
+    category = Category.friendly.find(params[:id])
     post_category = PostCategory.find_by(category_id: category.id)
     if post_category
       flash[:notice] = "Category cannot be deleted"
@@ -41,7 +41,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    id = params[:id]
+    category = Category.friendly.find(params[:id])
+    id = category.id
     post_ids = PostCategory.where(category_id: id).pluck(:post_id)
     @posts = Post.where(id: post_ids)
 
