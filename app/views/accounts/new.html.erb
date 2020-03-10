@@ -1,0 +1,27 @@
+<%= form_for @user, url: accounts_path  do |f| %>
+  <div>
+    <%= f.label :name %>
+  </div>
+  <div>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :username %>
+  </div>
+  <div>
+    <%= f.text_field :username %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+  </div>
+  <div>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.submit "Register", notice: 'Berhasil registrasi !' %>
+  </div>
+
+<% end %>

@@ -1,0 +1,19 @@
+<%= form_tag :sessions, action: :create do %>
+  <div>
+    <%= label_tag :username %>
+  </div>
+  <div>
+    <%= text_field_tag :username %>
+  </div>
+
+  <div>
+    <%= label_tag :passwoord %>
+  </div>
+  <div>
+    <%= text_field_tag :password %>
+  </div>
+
+  <div>
+    <%= submit_tag "Login" %>
+  </div>
+<% end %>
