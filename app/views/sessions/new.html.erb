@@ -1,19 +1,21 @@
-<%= form_tag :sessions, action: :create do %>
-  <div>
+<p id=”alert”><%= alert %></p>
+<h1>Login</h1>
+<%= form_tag sessions_path do |form| %>
+  <div class=”field”>
     <%= label_tag :username %>
-  </div>
-  <div>
     <%= text_field_tag :username %>
   </div>
 
-  <div>
-    <%= label_tag :passwoord %>
-  </div>
-  <div>
+  <div class=”field”>
+    <%= label_tag :password %>
     <%= text_field_tag :password %>
   </div>
 
-  <div>
+  <div class=”actions”>
     <%= submit_tag "Login" %>
   </div>
+
+  <span>
+    Have no account? <%= link_to "Sign Up", signup_path %>
+  </span>
 <% end %>

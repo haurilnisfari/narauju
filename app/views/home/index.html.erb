@@ -1,4 +1,14 @@
 <div class="card">
+  <div>
+    <% if current_user %>
+      Logged in as <%= current_user.username %>.
+      <%= link_to "Logout", logout_path %>
+    <% else %>
+      <%= link_to "Sign Up", signup_path %>
+      <%= link_to "Login", login_path %>
+    <% end %>
+  </div>
+
   <% @posts.each do |post| %>
     <h2><%=link_to post.title, post_path(post)%></h2>
     <%=post.created_at.strftime("%e %b %Y")%> |

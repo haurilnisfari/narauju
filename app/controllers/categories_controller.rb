@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :load_popular_posts, except: [:create, :destroy]
   before_action :load_categories, except: [:create, :destroy]
+  before_action :require_login, except: [:show]
 
   def new
     @category = Category.new
@@ -44,7 +45,7 @@ class CategoriesController < ApplicationController
     category = Category.friendly.find(params[:id])
     id = category.id
     post_ids = PostCategory.where(category_id: id).pluck(:post_id)
-    @posts = Post.where(id: post_ids)
+    @posts = Post.where(id: post_ids).where(state: 'publish')
 
     render 'home/index'
   end
