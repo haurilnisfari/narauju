@@ -1,7 +1,8 @@
 class AccountsController < ApplicationController
   before_action :load_popular_posts, except: [:destroy]
   before_action :load_categories, except: [:destroy]
-  
+  http_basic_authenticate_with name: Rails.application.credentials.http_basic_auth[:username], password: Rails.application.credentials.http_basic_auth[:password], only: [:new]
+
   def new
     @user = User.new
   end
