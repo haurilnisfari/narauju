@@ -23,4 +23,12 @@ class Post < ApplicationRecord
     self.state == "draft"
   end
 
+  def self.search(search)
+    if search
+      Post.published.where("title LIKE ?", "%#{search}%")
+    else
+      Post.published
+    end
+  end
+
 end

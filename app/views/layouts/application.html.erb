@@ -24,6 +24,13 @@
       </div>
 
       <div class="rightcolumn">
+        <%= form_tag root_path, :method => 'get' do  %>
+          <p>
+            <%= text_field_tag :search %>
+            <%= submit_tag "Search" %>
+          </p>
+        <% end %>
+
         <div class="card">
           <h2>About Me</h2>
           <%= image_tag("nisfa.jpg", size: "225x150") %>
