@@ -7,6 +7,10 @@ class Post < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  # def sum(num, other_num)
+  #   num + other_num
+  # end
+
   def self.published
     where(state: "publish")
   end
