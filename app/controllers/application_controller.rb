@@ -15,6 +15,14 @@ class ApplicationController < ActionController::Base
     @popular_posts = Post.popular
   end
 
+  def load_recent_posts
+    @recent_posts = Post.recent
+  end
+
+  def load_recent_comments
+    @recent_comments = Comment.recent
+  end
+
   def load_categories
     @categories = Category.all
   end

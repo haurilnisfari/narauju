@@ -16,6 +16,7 @@
 
   <h2>Comments</h2>
   <% @post.comments.each do |comment| %>
+  <div id="<%= comment.id %>">
     <p>
       <strong>Commenter:</strong>
       <%= comment.name %>
@@ -24,6 +25,7 @@
       <strong>Comment:</strong>
       <%= comment.body %>
     </p>
+  </div>
   <% end %>
 
   <h2>Add a comment:</h2>

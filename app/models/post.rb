@@ -15,6 +15,10 @@ class Post < ApplicationRecord
     order(view_count: :desc).limit(3)
   end
 
+  def self.recent
+    order(updated_at: :desc).limit(3)
+  end
+
   def publish?
     self.state == "publish"
   end

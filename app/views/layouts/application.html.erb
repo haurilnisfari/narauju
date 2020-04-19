@@ -24,10 +24,10 @@
       </div>
 
       <div class="rightcolumn">
-        <%= form_tag root_path, :method => 'get' do  %>
+        <%= form_tag root_path, method: 'get' do  %>
           <p>
             <%= text_field_tag :search %>
-            <%= submit_tag "Search" %>
+            <%= submit_tag "Search", name: nil %>
           </p>
         <% end %>
 
@@ -38,9 +38,21 @@
               Dulu sempat bekerja sebagai Odoo Developer dan sekarang sedang belajar Ruby on Rails.</p>
         </div>
         <div class="card">
-          <h3>Popular Post</h3>
+          <h3>Popular Posts</h3>
           <% @popular_posts.each do |popular_post| %>
-            <div><%= link_to popular_post.title, popular_post %></div></br>
+            <div><%= link_to popular_post.title, post_path(popular_post) %></div></br>
+          <% end %>
+        </div>
+        <div class="card">
+          <h3>Recent Posts</h3>
+          <% @recent_posts.each do |recent_post| %>
+            <div><%= link_to recent_post.title, post_path(recent_post) %></div></br>
+          <% end %>
+        </div>
+        <div class="card">
+          <h3>Recent Comments</h3>
+          <% @recent_comments.each do |recent_comment| %>
+            <div><%= recent_comment.name %> on <%= link_to recent_comment.post.title, post_path(recent_comment.post, anchor: recent_comment.id) %></div></br>
           <% end %>
         </div>
         <div class="card">

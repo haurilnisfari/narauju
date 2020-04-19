@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   before_action :load_popular_posts, except: [:create, :destroy]
   before_action :load_categories, except: [:create, :destroy]
   before_action :require_login, except: [:show]
+  before_action :load_recent_posts, except: [:create, :destroy]
+  before_action :load_recent_comments, except: [:create, :destroy]
 
 
   def new
