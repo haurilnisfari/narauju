@@ -48,7 +48,5 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
   database: narauju_production
-  username: narauju
-  password: <%= ENV['NARAUJU_DATABASE_PASSWORD'] %>
