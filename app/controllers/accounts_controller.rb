@@ -12,7 +12,7 @@ class AccountsController < ApplicationController
 
     if @user.save
       flash[:notice] = "Account has been created"
-      redirect_to @user
+      redirect_to login_path
     else
       render "new"
     end
