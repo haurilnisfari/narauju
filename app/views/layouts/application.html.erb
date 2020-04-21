@@ -37,24 +37,40 @@
           <p> Hi, nama saya Hauril Maulida Nisfari, seorang Ibu dan Istri, suka menulis dan ngoding.
               Dulu sempat bekerja sebagai Odoo Developer dan sekarang sedang belajar Ruby on Rails.</p>
         </div>
+
         <div class="card">
           <h3>Popular Posts</h3>
-          <% @popular_posts.each do |popular_post| %>
-            <div><%= link_to popular_post.title, post_path(popular_post) %></div></br>
+          <% if @popular_posts.present? %>
+            <% @popular_posts.each do |popular_post| %>
+              <div><%= link_to popular_post.title, post_path(popular_post) %></div></br>
+            <% end %>
+          <% else %>
+            Belom ada popular post
           <% end %>
         </div>
+
         <div class="card">
           <h3>Recent Posts</h3>
-          <% @recent_posts.each do |recent_post| %>
-            <div><%= link_to recent_post.title, post_path(recent_post) %></div></br>
+          <% if @recent_posts.present? %>
+            <% @recent_posts.each do |recent_post| %>
+              <div><%= link_to recent_post.title, post_path(recent_post) %></div></br>
+            <% end %>
+          <% else %>
+            Belom ada recent post
           <% end %>
         </div>
+
         <div class="card">
           <h3>Recent Comments</h3>
-          <% @recent_comments.each do |recent_comment| %>
-            <div><%= recent_comment.name %> on <%= link_to recent_comment.post.title, post_path(recent_comment.post, anchor: recent_comment.id) %></div></br>
+          <% if @recent_comments.present? %>
+            <% @recent_comments.each do |recent_comment| %>
+              <div><%= recent_comment.name %> on <%= link_to recent_comment.post.title, post_path(recent_comment.post, anchor: recent_comment.id) %></div></br>
+            <% end %>
+          <% else %>
+            Belom ada recent comment
           <% end %>
         </div>
+
         <div class="card">
           <h3>My Repository</h3><br>
           <%= link_to image_tag("github.png"), "https://github.com/haurilnisfari"  %>
