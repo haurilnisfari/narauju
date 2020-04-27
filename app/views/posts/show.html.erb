@@ -14,6 +14,11 @@
   <h2><%= @post.title %></h2>
   <p><%= @post.body %></p>
 
+  <h2>You May Also Like </h2>
+  <% @related_posts.each do |related_post| %>
+    <div><%= link_to related_post.title, post_path(related_post) %></div>
+  <% end %>
+
   <h2>Comments</h2>
   <% @post.comments.each do |comment| %>
   <div id="<%= comment.id %>">
