@@ -39,4 +39,19 @@ class Post < ApplicationRecord
     end
   end
 
+  def related
+    category_ids = self.category_ids
+    post_category_ids = PostCategory.where(category_id: category_ids).pluck(:post_id)
+    Post.where(id: post_category_ids).where(state: 'publish').limit(3)
+  end
+
+  def previous
+    Post.where(state: 'publish').where('id < ?', self.id).last
+  end
+
+  def next
+    Post.where(state: 'publish').where('created_at > ?', self.created_at).first
+  end
+
+
 end

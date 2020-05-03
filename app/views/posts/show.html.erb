@@ -14,9 +14,21 @@
   <h2><%= @post.title %></h2>
   <p><%= @post.body %></p>
 
+  <h2>Previous Post</h2>
+  <% if @previous_post.present? %>
+    <div><%= link_to @previous_post.title, post_path(@previous_post) %></div>
+  <% end %>
+
+  <h2>Next Post</h2>
+  <% if @next_post.present? %>
+    <div><%= link_to @next_post.title, post_path(@next_post) %></div>
+  <% end %>
+
   <h2>You May Also Like </h2>
-  <% @related_posts.each do |related_post| %>
-    <div><%= link_to related_post.title, post_path(related_post) %></div>
+  <% if @related_posts.present? %>
+    <% @related_posts.each do |related_post| %>
+      <div><%= link_to related_post.title, post_path(related_post) %></div>
+    <% end %>
   <% end %>
 
   <h2>Comments</h2>

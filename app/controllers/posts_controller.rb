@@ -58,9 +58,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.friendly.find(params[:id])
-    post_category_ids = @post.category_ids
-    post_category = PostCategory.where(category_id: post_category_ids).pluck(:post_id)
-    @related_posts = Post.where(id: post_category).where(state: 'publish').limit(3)
+    @related_posts = @post.related
+    @previous_post = @post.previous
+    @next_post = @post.next
 
     if @post.draft?
       redirect_to root_path
