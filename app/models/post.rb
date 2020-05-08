@@ -46,11 +46,11 @@ class Post < ApplicationRecord
   end
 
   def previous
-    Post.where(state: 'publish').where('id < ?', self.id).last
+    Post.published.where('id < ?', self.id).order(id: :asc).last
   end
 
   def next
-    Post.where(state: 'publish').where('id > ?', self.id).first
+    Post.published.where('id > ?', self.id).order(id: :asc).first
   end
 
 
