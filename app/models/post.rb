@@ -50,7 +50,7 @@ class Post < ApplicationRecord
   end
 
   def next
-    Post.where(state: 'publish').where('created_at > ?', self.created_at).first
+    Post.where(state: 'publish').where('id > ?', self.id).first
   end
 
 
