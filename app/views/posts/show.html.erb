@@ -17,11 +17,15 @@
   <h2>Previous Post</h2>
   <% if @previous_post.present? %>
     <div><%= link_to @previous_post.title, post_path(@previous_post) %></div>
+  <% else %>
+    -
   <% end %>
 
   <h2>Next Post</h2>
   <% if @next_post.present? %>
     <div><%= link_to @next_post.title, post_path(@next_post) %></div>
+  <% else %>
+    -
   <% end %>
 
   <h2>You May Also Like </h2>
@@ -31,18 +35,20 @@
     <% end %>
   <% end %>
 
-  <h2>Comments</h2>
-  <% @post.comments.each do |comment| %>
-  <div id="<%= comment.id %>">
-    <p>
-      <strong>Commenter:</strong>
-      <%= comment.name %>
-    </p>
-    <p>
-      <strong>Comment:</strong>
-      <%= comment.body %>
-    </p>
-  </div>
+  <% if @post.comments.present? %>
+    <h2>Comments</h2>
+    <% @post.comments.each do |comment| %>
+      <div id="<%= comment.id %>">
+        <p>
+          <strong>Commenter:</strong>
+          <%= comment.name %>
+        </p>
+        <p>
+          <strong>Comment:</strong>
+          <%= comment.body %>
+        </p>
+      </div>
+    <% end %>
   <% end %>
 
   <h2>Add a comment:</h2>
