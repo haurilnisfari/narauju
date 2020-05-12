@@ -2,9 +2,11 @@
 <html>
   <head>
     <title>Narauju</title>
+
     <meta property="og:title" content="<%= @post&.title || "Narauju Blog Post" %>" />
-    <meta property="og:description" content="<%= @post&.body || "Blognya Narauju" %>" />
+    <meta property="og:description" content="<%= @post&.title || "Blognya Narauju" %>" />
     <meta property="og:image" content="http://<%= request.host + image_path("nisfa.jpg")%>" />
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
