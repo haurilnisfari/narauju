@@ -1,14 +1,4 @@
 <div class="card">
-  <div>
-    <% if current_user %>
-      Logged in as <%= current_user.username %>.
-      <%= link_to "Logout", logout_path %>
-    <% else %>
-      <%= link_to "Sign Up", signup_path %>
-      <%= link_to "Login", login_path %>
-    <% end %>
-  </div>
-
   <% if @posts.present? %>
     <% @posts.each do |post| %>
       <h2><%=link_to post.title, post_path(post)%></h2>
@@ -23,7 +13,7 @@
       <%= link_to 'read more', post_path(post) %>
     <% end %>
   <% else %>
-    "Hasil Ga ada"
+
   <% end %>
 </div>
 

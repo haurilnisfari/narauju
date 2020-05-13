@@ -18,6 +18,18 @@
     <div class="header">
       <h2><%= link_to "NARAUJU BLOG", root_path %></h2>
     </div>
+    <div class="card">
+      <div>
+        <% if current_user %>
+          Logged in as <%= current_user.username %> |
+          <%= link_to "Logout", logout_path %> |
+          <%= link_to "Create New Post", new_post_path %>
+        <% else %>
+          <%= link_to "Sign Up", signup_path %> |
+          <%= link_to "Login", login_path %>
+        <% end %>
+      </div>
+    </div>
 
     <div class="row">
       <div class="leftcolumn">

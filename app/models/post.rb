@@ -16,11 +16,11 @@ class Post < ApplicationRecord
   end
 
   def self.popular
-    order(view_count: :desc).limit(3)
+    self.published.order(view_count: :desc).limit(3)
   end
 
   def self.recent
-    order(updated_at: :desc).limit(3)
+    self.published.order(updated_at: :desc).limit(3)
   end
 
   def publish?
