@@ -4,8 +4,8 @@
     <title>Narauju</title>
 
     <meta property="og:title" content="<%= @post&.title || "Narauju Blog Post" %>" />
-    <meta property="og:description" content="<%= @post&.title || "Blognya Narauju" %>" />
-    <meta property="og:image" content="http://<%= request.host + image_path("nisfa.jpg")%>" />
+    <meta property="og:description" content="<%= truncate(strip_tags(@post&.body.to_s), length: 160) || "Blognya Narauju" %>" />
+    <meta property="og:image" content="https://instagram.fjog3-1.fna.fbcdn.net/v/t51.2885-15/e35/p1080x1080/91625790_258447118522128_5151132685765713772_n.jpg?_nc_ht=instagram.fjog3-1.fna.fbcdn.net&_nc_cat=100&_nc_ohc=MmXlswJPIjkAX-oCWt8&oh=6b13e5c80d7e80750f72b4afe5a9c09e&oe=5EE4FC94" />
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
